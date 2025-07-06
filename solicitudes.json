@@ -1,0 +1,18 @@
+[
+  {
+    "nombre": "jorge",
+    "zona": "san lorenzo 1036",
+    "servicio": "lavarropas",
+    "descripcion": "no funciona",
+    "fecha": "30/6/2025, 11:13:47",
+    "estado": "aceptada"
+  },
+  {
+    "nombre": "zxc",
+    "zona": "zxczx",
+    "servicio": "lavarropas",
+    "descripcion": "zxczx",
+    "fecha": "30/6/2025, 11:10:57",
+    "estado": "rechazada"
+  }
+]

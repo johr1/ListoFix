@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🔧 Listo Fix - Servicio Técnico</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="contenedor">
+    <h1>🔧 Listo Fix</h1>
+    <h2>Solicitá un técnico</h2>
+    <form id="formulario">
+      <label>Nombre:</label><br />
+      <input type="text" name="nombre" required /><br /><br />
+
+      <label>Zona / Dirección:</label><br />
+      <input type="text" name="zona" required /><br /><br />
+
+      <label>Tipo de servicio:</label><br />
+      <select name="servicio" required>
+        <option value="">-- Seleccionar --</option>
+        <option value="lavarropas">Reparación de Lavarropas</option>
+        <option value="aire">Instalación de Aire Acondicionado</option>
+      </select><br /><br />
+
+      <label>Descripción del problema:</label><br />
+      <textarea name="descripcion" rows="4" required></textarea><br /><br />
+
+      <button type="submit">Enviar solicitud</button>
+    </form>
+    <p id="mensaje"></p>
+  </div>
+
+  <!-- Firebase SDKs (desde CDN) -->
+  <script type="module" src="script.js"></script>
+</body>
+</html>
