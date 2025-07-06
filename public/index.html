@@ -1,38 +1,78 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🔧 Listo Fix - Servicio Técnico</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="contenedor">
-    <h1>🔧 Listo Fix</h1>
-    <h2>Solicitá un técnico</h2>
-    <form id="formulario">
-      <label>Nombre:</label><br />
-      <input type="text" name="nombre" required /><br /><br />
+<body class="bg-gray-100 text-gray-800 font-sans">
+  <header class="bg-blue-500 text-white py-10 text-center">
+    <h1 class="text-3xl md:text-5xl font-bold">
+      ¿Lavarropas o Aire Acondicionado con Problemas?<br />
+      ¡ListoFix lo Soluciona!
+    </h1>
+    <p class="mt-4 max-w-xl mx-auto text-lg">
+      Técnicos verificados para reparar tu lavarropas o instalar/reparar tu
+      aire acondicionado Split. Servicio rápido, confiable y con garantía.
+    </p>
+  </header>
 
-      <label>Zona / Dirección:</label><br />
-      <input type="text" name="zona" required /><br /><br />
+  <section class="py-10 max-w-5xl mx-auto px-4">
+    <h2 class="text-2xl font-semibold text-center mb-6">
+      ¿Por Qué Elegir ListoFix?
+    </h2>
+    <div class="grid md:grid-cols-3 gap-6 text-center">
+      <div class="bg-white rounded-xl shadow p-4">
+        <h3 class="text-lg font-bold">Técnicos Verificados</h3>
+        <p>Revisados personalmente y calificados por otros clientes.</p>
+      </div>
+      <div class="bg-white rounded-xl shadow p-4">
+        <h3 class="text-lg font-bold">Servicio con Garantía</h3>
+        <p>Ofrecemos garantía en todos los trabajos realizados.</p>
+      </div>
+      <div class="bg-white rounded-xl shadow p-4">
+        <h3 class="text-lg font-bold">Respuesta Rápida</h3>
+        <p>Solicitá tu técnico en minutos. Rápido y sencillo.</p>
+      </div>
+    </div>
+  </section>
 
-      <label>Tipo de servicio:</label><br />
-      <select name="servicio" required>
-        <option value="">-- Seleccionar --</option>
-        <option value="lavarropas">Reparación de Lavarropas</option>
-        <option value="aire">Instalación de Aire Acondicionado</option>
-      </select><br /><br />
+  <section class="py-10 bg-gray-50 px-4">
+    <h2 class="text-2xl font-semibold text-center mb-6">
+      ¿Qué Necesitás Solucionar Hoy?
+    </h2>
+    <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+      <div class="bg-white rounded-xl shadow p-6 text-center">
+        <h3 class="text-lg font-bold mb-2">Reparación de Lavarropas</h3>
+        <p>
+          Técnicos calificados en todas las marcas y modelos de lavarropas.
+          Solución efectiva para que tu ropa no se acumule como nunca.
+        </p>
+      </div>
+      <div class="bg-white rounded-xl shadow p-6 text-center">
+        <h3 class="text-lg font-bold mb-2">
+          Servicios de Aire Acondicionado Split
+        </h3>
+        <p>
+          Instalación, mantenimiento o reparación de equipos Split. Técnicos
+          certificados para un trabajo profesional y con garantía.
+        </p>
+      </div>
+    </div>
+  </section>
 
-      <label>Descripción del problema:</label><br />
-      <textarea name="descripcion" rows="4" required></textarea><br /><br />
-
-      <button type="submit">Enviar solicitud</button>
-    </form>
-    <p id="mensaje"></p>
-  </div>
-
-  <!-- Firebase SDKs (desde CDN) -->
-  <script type="module" src="script.js"></script>
+  <section class="py-10 text-center">
+    <h2 class="text-2xl font-semibold mb-4">¿Listo para Empezar?</h2>
+    <p class="mb-6">
+      Creá tu solicitud de servicio y recibí presupuestos en minutos. ¡Solo
+      pagás si aceptás un técnico!
+    </p>
+    <div class="flex justify-center gap-4 flex-wrap">
+      <a
+        href="/formulario.html"
+        class="bg-orange-500 hover:bg-orange-600 text-white py-2 px-4 rounded-xl"
+      >
+        Solicitar Técnico Urgente
+      </a>
+      <a
+        href="/formulario.html"
+        class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-xl"
+      >
+        Solicitar Servicio Programado
+      </a>
+    </div>
+  </section>
 </body>
-</html>
