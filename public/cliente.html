@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ListoFix - Mis Solicitudes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="/cliente.js"></script>
+  </head>
+  <body class="bg-gray-100 font-sans">
+    <!-- Barra de navegación -->
+    <nav class="bg-white shadow-md px-6 py-4 flex justify-between items-center">
+      <div class="text-blue-600 font-bold text-xl">🔧 ListoFix</div>
+      <div class="flex gap-4 items-center">
+        <a href="/" class="text-sm text-gray-700 hover:underline">Inicio</a>
+        <a href="/formulario.html" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-sm">Nueva Solicitud</a>
+        <span id="username" class="text-gray-600 text-sm"></span>
+        <button onclick="logout()" class="text-sm text-red-600 hover:underline">Cerrar sesión</button>
+      </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="max-w-5xl mx-auto mt-10 px-4">
+      <h1 class="text-2xl font-semibold mb-6 text-blue-700">📝 Mis Solicitudes</h1>
+      <div id="solicitudes-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Las tarjetas se cargan acá con JS -->
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,4 +1,4 @@
-// tecnico.js
+// cliente.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
 import {
   getAuth,
@@ -10,12 +10,10 @@ import {
   collection,
   query,
   where,
-  getDocs,
-  updateDoc,
-  doc
+  getDocs
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
-// ⚠️ Tu configuración real
+// ⚠️ Tu configuración real de Firebase:
 const firebaseConfig = {
   apiKey: "TU_API_KEY",
   authDomain: "TU_AUTH_DOMAIN",
@@ -29,12 +27,14 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+// Cerrar sesión
 window.logout = () => {
   signOut(auth).then(() => {
     window.location.href = "/login.html";
   });
 };
 
+// Mostrar solicitudes del usuario logueado
 onAuthStateChanged(auth, async (user) => {
   if (!user) {
     window.location.href = "/login.html";
@@ -45,55 +45,37 @@ onAuthStateChanged(auth, async (user) => {
 
   const q = query(
     collection(db, "solicitudes"),
-    where("estado", "==", "pendiente")
+    where("uid", "==", user.uid)
   );
 
   const querySnapshot = await getDocs(q);
   const container = document.getElementById("solicitudes-container");
   container.innerHTML = "";
 
-  querySnapshot.forEach((docSnap) => {
-    const data = docSnap.data();
-    const id = docSnap.id;
+  querySnapshot.forEach((doc) => {
+    const data = doc.data();
+    const estadoColor =
+      data.estado === "completada"
+        ? "bg-green-200 text-green-800"
+        : data.estado === "en progreso"
+        ? "bg-blue-200 text-blue-800"
+        : "bg-yellow-200 text-yellow-800";
 
     const tarjeta = `
       <div class="bg-white p-4 rounded-lg shadow">
         <div class="flex justify-between items-center mb-2">
           <h2 class="text-lg font-semibold">${data.servicio}</h2>
-          <span class="text-xs px-2 py-1 rounded bg-yellow-200 text-yellow-800">
-            Pendiente
+          <span class="text-xs px-2 py-1 rounded ${estadoColor}">
+            ${data.estado || "pendiente"}
           </span>
         </div>
         <p class="text-sm text-gray-600 mb-1"><strong>Solicitado:</strong> ${data.fechaSolicitud}</p>
         <p class="text-sm text-gray-600 mb-1"><strong>Descripción:</strong> ${data.descripcion}</p>
         <p class="text-sm text-gray-600 mb-3"><strong>Fecha preferida:</strong> ${data.fechaPreferida}</p>
-        <div class="flex gap-2">
-          <button onclick="aceptar('${id}')" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-sm">
-            Aceptar
-          </button>
-          <button onclick="rechazar('${id}')" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm">
-            Rechazar
-          </button>
-        </div>
+        <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-sm">Ver Detalles</a>
       </div>
     `;
 
     container.innerHTML += tarjeta;
   });
 });
-
-window.aceptar = async (id) => {
-  await updateDoc(doc(db, "solicitudes", id), {
-    estado: "en progreso"
-  });
-  alert("Solicitud aceptada");
-  location.reload();
-};
-
-window.rechazar = async (id) => {
-  await updateDoc(doc(db, "solicitudes", id), {
-    estado: "rechazada"
-  });
-  alert("Solicitud rechazada");
-  location.reload();
-};
