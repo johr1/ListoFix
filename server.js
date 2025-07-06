@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static('public'));
 app.use(express.json());
 
-// Ruta de login
+// LOGIN
 app.post('/api/login', (req, res) => {
   const { email, password, tipo } = req.body;
   const archivo = tipo === 'cliente' ? 'clientes.json' : 'tecnicos.json';
@@ -24,7 +24,7 @@ app.post('/api/login', (req, res) => {
   });
 });
 
-// Guardar solicitud
+// GUARDAR SOLICITUD
 app.post('/api/solicitud', (req, res) => {
   const nuevaSolicitud = req.body;
   const archivo = path.join(__dirname, 'solicitudes.json');
@@ -38,7 +38,7 @@ app.post('/api/solicitud', (req, res) => {
   });
 });
 
-// Obtener solicitudes
+// LISTAR SOLICITUDES
 app.get('/api/solicitudes', (req, res) => {
   const archivo = path.join(__dirname, 'solicitudes.json');
   fs.readFile(archivo, 'utf8', (err, data) => {
@@ -47,7 +47,7 @@ app.get('/api/solicitudes', (req, res) => {
   });
 });
 
-// Marcar solicitud como aceptada o rechazada
+// ACEPTAR / RECHAZAR
 app.post('/api/estado/:index', (req, res) => {
   const { estado } = req.body;
   const index = parseInt(req.params.index);
@@ -67,7 +67,7 @@ app.post('/api/estado/:index', (req, res) => {
   });
 });
 
-// Marcar como pagado
+// PAGADO
 app.post('/api/pagado/:index', (req, res) => {
   const index = parseInt(req.params.index);
   const archivo = path.join(__dirname, 'solicitudes.json');
@@ -86,7 +86,7 @@ app.post('/api/pagado/:index', (req, res) => {
   });
 });
 
-// Guardar calificación
+// CALIFICACIÓN
 app.post('/api/calificar/:index', (req, res) => {
   const index = parseInt(req.params.index);
   const { estrellas, comentario } = req.body;
@@ -106,12 +106,12 @@ app.post('/api/calificar/:index', (req, res) => {
   });
 });
 
-// Redirección a login
+// REDIRECCIÓN AL LOGIN
 app.get('/', (req, res) => {
   res.redirect('/login.html');
 });
 
-// Iniciar servidor
+// INICIAR SERVIDOR
 app.listen(PORT, () => {
-  console.log(`Servidor Express corriendo en http://localhost:${PORT}`);
+  console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
