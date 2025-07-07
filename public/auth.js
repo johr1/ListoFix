@@ -1,18 +1,16 @@
-// auth.js o login.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
 import {
   getAuth,
   signInWithEmailAndPassword,
-  createUserWithEmailAndPassword
+  createUserWithEmailAndPassword,
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 import {
   getFirestore,
-  doc,
   setDoc,
-  getDoc
+  doc,
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
-// 🔧 Reemplazá con tu configuración real de Firebase:
+// Config de Firebase
 const firebaseConfig = {
   apiKey: "TU_API_KEY",
   authDomain: "TU_AUTH_DOMAIN",
@@ -22,58 +20,52 @@ const firebaseConfig = {
   appId: "TU_APP_ID"
 };
 
-// Inicializar Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// INICIO DE SESIÓN
+// Función de login
 async function login() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
+  const rol = document.getElementById("rol").value;
 
   try {
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    const uid = userCredential.user.uid;
-
-    const userDoc = await getDoc(doc(db, "usuarios", uid));
-    const rol = userDoc.exists() ? userDoc.data().rol : "cliente";
-
-    if (rol === "tecnico") {
-      window.location.href = "/tecnico.html";
-    } else {
+    const cred = await signInWithEmailAndPassword(auth, email, password);
+    const user = cred.user;
+    if (rol === "cliente") {
       window.location.href = "/cliente.html";
+    } else {
+      window.location.href = "/tecnico.html";
     }
   } catch (error) {
-    document.getElementById("mensaje").textContent = "Error al iniciar sesión: " + error.message;
+    alert("Error al iniciar sesión: " + error.message);
   }
 }
 
-// REGISTRO DE USUARIO
+// Función de registro
 async function register() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
   const rol = document.getElementById("rol").value;
 
   try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    const uid = userCredential.user.uid;
-
-    await setDoc(doc(db, "usuarios", uid), {
+    const cred = await createUserWithEmailAndPassword(auth, email, password);
+    const user = cred.user;
+    await setDoc(doc(db, "usuarios", user.uid), {
       email,
-      rol
+      rol,
     });
-
-    if (rol === "tecnico") {
-      window.location.href = "/tecnico.html";
-    } else {
+    if (rol === "cliente") {
       window.location.href = "/cliente.html";
+    } else {
+      window.location.href = "/tecnico.html";
     }
   } catch (error) {
-    document.getElementById("mensaje").textContent = "Error al registrarse: " + error.message;
+    alert("Error al registrarse: " + error.message);
   }
 }
 
-// Asignar funciones a botones
+// Hacer accesibles las funciones desde HTML
 window.login = login;
 window.register = register;
