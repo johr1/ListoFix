@@ -5,8 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ListoFix</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="/index.js"></script>
   </head>
   <body class="bg-gray-100 text-gray-800 font-sans">
+    <!-- NAV SUPERIOR -->
+    <nav class="bg-white shadow px-6 py-3 flex justify-between items-center">
+      <div class="text-blue-600 font-bold text-xl">🔧 ListoFix</div>
+      <div class="flex gap-4 items-center">
+        <span id="bienvenida" class="text-sm text-gray-600"></span>
+        <a
+          href="/login.html"
+          class="text-sm bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg"
+        >
+          Registrarme / Iniciar Sesión
+        </a>
+      </div>
+    </nav>
+
+    <!-- HEADER PRINCIPAL -->
     <header class="bg-blue-500 text-white py-10 text-center">
       <h1 class="text-3xl md:text-5xl font-bold">
         ¿Lavarropas o Aire Acondicionado con Problemas?<br />
@@ -18,6 +34,7 @@
       </p>
     </header>
 
+    <!-- SECCIÓN DESTACADOS -->
     <section class="py-10 max-w-5xl mx-auto px-4">
       <h2 class="text-2xl font-semibold text-center mb-6">
         ¿Por Qué Elegir ListoFix?
@@ -38,6 +55,7 @@
       </div>
     </section>
 
+    <!-- SERVICIOS -->
     <section class="py-10 bg-gray-50 px-4">
       <h2 class="text-2xl font-semibold text-center mb-6">
         ¿Qué Necesitás Solucionar Hoy?
@@ -62,6 +80,7 @@
       </div>
     </section>
 
+    <!-- ACCIONES -->
     <section class="py-10 text-center">
       <h2 class="text-2xl font-semibold mb-4">¿Listo para Empezar?</h2>
       <p class="mb-6">
