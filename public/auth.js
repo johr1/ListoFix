@@ -10,21 +10,23 @@ import {
   doc,
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
-// Config de Firebase
+// Configuración de Firebase
 const firebaseConfig = {
-  apiKey: "TU_API_KEY",
-  authDomain: "TU_AUTH_DOMAIN",
+  apiKey: "AIzaSyCPX4yh69hS-80138m9_tXn6ME0Fja0aIA",
+  authDomain: "listofix-b1867.firebaseapp.com",
   projectId: "listofix-b1867",
-  storageBucket: "TU_BUCKET",
-  messagingSenderId: "TU_SENDER_ID",
-  appId: "TU_APP_ID"
+  storageBucket: "listofix-b1867.appspot.com",
+  messagingSenderId: "124652608036",
+  appId: "1:124652608036:web:748ba317fb1d0f19be8751",
+  measurementId: "G-VP7X3NGZ72"
 };
 
+// Inicializar Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// Función de login
+// Iniciar sesión
 async function login() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
@@ -43,7 +45,7 @@ async function login() {
   }
 }
 
-// Función de registro
+// Registrarse
 async function register() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
@@ -66,6 +68,6 @@ async function register() {
   }
 }
 
-// Hacer accesibles las funciones desde HTML
+// Exportar funciones al HTML
 window.login = login;
 window.register = register;
