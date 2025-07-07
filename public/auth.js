@@ -12,7 +12,7 @@ import {
   getDoc
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
-// ⚠️ Reemplazá con tu configuración real de Firebase
+// ⚠️ Reemplazá esto con tu firebaseConfig real:
 const firebaseConfig = {
   apiKey: "TU_API_KEY",
   authDomain: "TU_AUTH_DOMAIN",
@@ -26,6 +26,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+// INICIO DE SESIÓN
 async function login() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
@@ -47,6 +48,7 @@ async function login() {
   }
 }
 
+// REGISTRO DE USUARIO
 async function register() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
