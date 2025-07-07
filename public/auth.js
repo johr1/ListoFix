@@ -1,4 +1,4 @@
-// auth.js
+// auth.js o login.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
 import {
   getAuth,
@@ -12,7 +12,7 @@ import {
   getDoc
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
-// ⚠️ Reemplazá esto con tu firebaseConfig real:
+// 🔧 Reemplazá con tu configuración real de Firebase:
 const firebaseConfig = {
   apiKey: "TU_API_KEY",
   authDomain: "TU_AUTH_DOMAIN",
@@ -22,6 +22,7 @@ const firebaseConfig = {
   appId: "TU_APP_ID"
 };
 
+// Inicializar Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
@@ -44,7 +45,7 @@ async function login() {
       window.location.href = "/cliente.html";
     }
   } catch (error) {
-    document.getElementById("mensaje").textContent = "Error al iniciar sesión";
+    document.getElementById("mensaje").textContent = "Error al iniciar sesión: " + error.message;
   }
 }
 
@@ -69,9 +70,10 @@ async function register() {
       window.location.href = "/cliente.html";
     }
   } catch (error) {
-    document.getElementById("mensaje").textContent = "Error al registrarse";
+    document.getElementById("mensaje").textContent = "Error al registrarse: " + error.message;
   }
 }
 
+// Asignar funciones a botones
 window.login = login;
 window.register = register;
